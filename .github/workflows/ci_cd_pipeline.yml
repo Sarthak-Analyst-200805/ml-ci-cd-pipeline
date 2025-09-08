@@ -27,6 +27,10 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+      
+      # This new step is added for debugging to see all available files
+      - name: List files in repository
+        run: ls -R
 
       - name: Train Model
         run: python model/train.py
@@ -36,3 +40,4 @@ jobs:
 
       - name: Run Unit Tests
         run: python -m unittest discover -s tests
+
