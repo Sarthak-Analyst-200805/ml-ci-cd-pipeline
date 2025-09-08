@@ -13,12 +13,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        # Updated from v2 to v4 for better performance and security
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        # Updated from v2 to v5
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.13'
+          # Changed from '3.13' to a stable, supported version
+          python-version: '3.11'
 
       - name: Install dependencies
         run: |
@@ -26,13 +29,10 @@ jobs:
           pip install -r requirements.txt
 
       - name: Train Model
-        run: |
-          python model/train.py
+        run: python model/train.py
 
       - name: Evaluate Model
-        run: |
-          python model/evaluate.py
+        run: python model/evaluate.py
 
       - name: Run Unit Tests
-        run: |
-          python -m unittest discover -s tests
+        run: python -m unittest discover -s tests
